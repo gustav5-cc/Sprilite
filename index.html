@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Normal Map Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Image to Normal Map Converter</h1>
+
+    <div class="container">
+        <div class="upload-section">
+            <label for="imageUpload" class="upload-button">Upload Image</label>
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            <p id="status">Please upload an image (PNG, JPG, etc.).</p>
+        </div>
+
+        <div class="options">
+            <label for="strength">Strength:</label>
+            <input type="range" id="strength" name="strength" min="0.1" max="10.0" value="1.0" step="0.1">
+            <span id="strengthValue">1.0</span>
+        </div>
+
+        <div class="options filter-options"> <label>Filter Type:</label>
+            <input type="radio" id="sobelFilter" name="filterType" value="sobel" checked>
+            <label for="sobelFilter">Sobel</label>
+            <input type="radio" id="scharrFilter" name="filterType" value="scharr">
+            <label for="scharrFilter">Scharr</label>
+        </div>
+
+        <div class="options inversion-options">
+            <label>Inversion Controls:</label>
+            <div>
+                <input type="checkbox" id="invertHeight" name="invertHeight">
+                <label for="invertHeight">Invert Height Source (Flip Bumps/Dents)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="invertRed" name="invertRed">
+                <label for="invertRed">Invert Red Channel (X-axis)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="invertGreen" name="invertGreen">
+                <label for="invertGreen">Invert Green Channel (Y-axis)</label>
+            </div>
+        </div>
+
+
+        <div class="canvas-container">
+            <div class="canvas-wrapper">
+                <h2>Original Image</h2>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            <div class="canvas-wrapper">
+                <h2>Generated Normal Map</h2>
+                <canvas id="normalMapCanvas"></canvas>
+                <a id="downloadLink" class="download-button" style="display: none;">Download Normal Map</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
